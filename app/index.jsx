@@ -6,8 +6,10 @@ import { LinearGradient } from 'expo-linear-gradient';
 import Animated, { FadeInDown } from 'react-native-reanimated';
 import { hp } from '../helpers/common';
 import { theme } from '../constants/theme';
+import { useRouter } from 'expo-router';
 
 const Welcome = () => {
+    const router = useRouter();
     return (
         <View className="flex-1">
             <StatusBar style="light" />
@@ -26,7 +28,7 @@ const Welcome = () => {
                     <Animated.Text entering={FadeInDown.delay(500).springify()} className="tracking-wider mb-2 font-medium" style={{ fontSize: hp(2) }}>Your World, Your Wallpapers</Animated.Text>
 
                     <Animated.View entering={FadeInDown.delay(600).springify()}>
-                        <Pressable className="mb-12 rounded-[18px]" style={{ backgroundColor: theme.colors.neutral(0.9), padding: 15, paddingHorizontal: 90, borderCurve: 'continuous' }}>
+                        <Pressable onPress={() => router.push("home")} className="mb-12 rounded-[18px]" style={{ backgroundColor: theme.colors.neutral(0.9), padding: 15, paddingHorizontal: 90, borderCurve: 'continuous' }}>
                             <Text className="text-white font-medium tracking-wider" style={{ fontSize: hp(3) }}>Start Explore</Text>
                         </Pressable>
                     </Animated.View>
